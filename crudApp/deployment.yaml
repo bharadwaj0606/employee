@@ -1,0 +1,20 @@
+apiversion: v1
+kind: Deployment
+metadata:
+  name: employeeservice
+  namespace: mynamespace
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: employeeservice
+  template:
+    metadata:
+      labels:
+        app: employeeservice
+    spec:
+      containers:
+        - name: employeeservice
+          image: employeeservice:latest
+          imagePullPolicy: IfNotPresent         
+            - containerPort: 8080
